@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LKPD Digital Interaktif - Graf: Representasi Masalah dan Navigasi - Informatika Kelas 8 SMP Negeri 19 Kota Bekasi" />
+  <meta name="theme-color" content="#0b2545" />
+  <title>LKPD Digital · Graf: Representasi Masalah dan Navigasi</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Kanvas konfeti (overlay penuh layar, tidak menghalangi klik) ===== -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===== Header aplikasi ===== -->
+  <header class="app-header no-print">
+    <div class="brand">
+      <img src="logo.png" alt="Logo SMPN 19 Bekasi" class="logo" />
+      <div class="brand-text">
+        <h1 data-i18n="appTitle">LKPD Digital · Graf: Representasi Masalah &amp; Navigasi</h1>
+        <p data-i18n="appSubtitle">Informatika Kelas 8 — Berpikir Komputasional</p>
+      </div>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Pilih Bahasa / Choose Language">
+      <button type="button" class="lang-btn is-active" data-lang="id">🇮🇩 ID</button>
+      <button type="button" class="lang-btn" data-lang="en">🇬🇧 EN</button>
+    </div>
+  </header>
+
+  <!-- ===== Header khusus cetak (hanya muncul saat Ctrl+P) ===== -->
+  <div id="print-header" class="print-only"></div>
+
+  <main>
+    <!-- ===== Navigasi Tahap ===== -->
+    <nav class="stepper no-print" aria-label="Navigasi Tahap">
+      <button type="button" class="step-btn is-active" data-step="1">
+        <span class="step-num">1</span>
+        <span data-i18n="step1">Belajar Konsep</span>
+      </button>
+      <button type="button" class="step-btn" data-step="2">
+        <span class="step-num">2</span>
+        <span data-i18n="step2">Misi Pembuat Graf</span>
+      </button>
+      <button type="button" class="step-btn" data-step="3">
+        <span class="step-num">3</span>
+        <span data-i18n="step3">Refleksi LKPD</span>
+      </button>
+    </nav>
+
+    <!-- ============================================================
+         TAHAP 1 — BELAJAR KONSEP
+         ============================================================ -->
+    <section id="stage-1" class="stage is-active" aria-labelledby="s1-title">
+      <h2 id="s1-title" class="stage-title" data-i18n="s1Title">Tahap 1 — Belajar Konsep</h2>
+      <p class="lead" data-i18n="s1Intro">
+        Graf adalah kumpulan titik yang saling terhubung oleh garis. Dua istilah paling penting
+        dalam graf adalah Node dan Edge.
+      </p>
+
+      <div class="concept-grid">
+        <!-- Kartu NODE -->
+        <article class="card">
+          <div class="card-head">
+            <span class="badge badge-teal">Node</span>
+            <h3>Node <span class="term-id">(Simpul)</span></h3>
+          </div>
+          <svg viewBox="0 0 260 130" class="mini-svg" role="img" aria-label="Ilustrasi dua node A dan B">
+            <circle cx="70" cy="52" r="26" class="svg-node" />
+            <text x="70" y="61" class="svg-letter">A</text>
+            <circle cx="190" cy="52" r="26" class="svg-node" />
+            <text x="190" y="61" class="svg-letter">B</text>
+            <text x="70" y="108" class="svg-caption">Node A</text>
+            <text x="190" y="108" class="svg-caption">Node B</text>
+          </svg>
+          <p data-i18n="nodeDesc">
+            Node adalah titik yang mewakili sebuah objek, tempat, atau keadaan. Pada peta sekolah,
+            node bisa berupa Gerbang, Lapangan, Kantin, dan lainnya.
+          </p>
+        </article>
+
+        <!-- Kartu EDGE -->
+        <article class="card">
+          <div class="card-head">
+            <span class="badge badge-navy">Edge</span>
+            <h3>Edge <span class="term-id">(Sisi / Penghubung)</span></h3>
+          </div>
+          <svg viewBox="0 0 260 130" class="mini-svg" role="img" aria-label="Ilustrasi edge menghubungkan node A dan B">
+            <line x1="96" y1="52" x2="164" y2="52" class="svg-edge" />
+            <circle cx="70" cy="52" r="26" class="svg-node" />
+            <text x="70" y="61" class="svg-letter">A</text>
+            <circle cx="190" cy="52" r="26" class="svg-node" />
+            <text x="190" y="61" class="svg-letter">B</text>
+            <text x="130" y="34" class="svg-caption">Edge</text>
+            <text x="130" y="108" class="svg-caption">A — B</text>
+          </svg>
+          <p data-i18n="edgeDesc">
+            Edge adalah garis yang menghubungkan dua node. Edge menunjukkan adanya hubungan langsung
+            antara dua tempat, misalnya jalan yang bisa dilalui dari Gerbang ke Lapangan.
+          </p>
+        </article>
+      </div>
+
+      <h3 class="section-sub" data-i18n="s1TypesTitle">Jenis-Jenis Graf (Graph Types)</h3>
+
+      <div class="type-grid">
+        <!-- Undirected -->
+        <article class="card card-small">
+          <h4>Undirected Graph <span class="term-id">(Graf Tak Berarah)</span></h4>
+          <svg viewBox="0 0 220 90" class="mini-svg mini-svg-sm" role="img" aria-label="Graf tak berarah">
+            <line x1="78" y1="45" x2="142" y2="45" class="svg-edge" />
+            <circle cx="56" cy="45" r="20" class="svg-node" />
+            <text x="56" y="52" class="svg-letter svg-letter-sm">A</text>
+            <circle cx="164" cy="45" r="20" class="svg-node" />
+            <text x="164" y="52" class="svg-letter svg-letter-sm">B</text>
+          </svg>
+          <p data-i18n="undirectedDesc">
+            Garis tidak memiliki panah. Hubungan berlaku dua arah: bisa dari A ke B, bisa juga dari B ke A.
+          </p>
+        </article>
+
+        <!-- Directed -->
+        <article class="card card-small">
+          <h4>Directed Graph <span class="term-id">(Graf Berarah)</span></h4>
+          <svg viewBox="0 0 220 90" class="mini-svg mini-svg-sm" role="img" aria-label="Graf berarah">
+            <defs>
+              <marker id="arrowHead" markerWidth="10" markerHeight="10" refX="7" refY="3"
+                      orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L7,3 L0,6 z" fill="#12b3a6" />
+              </marker>
+            </defs>
+            <line x1="78" y1="45" x2="142" y2="45" class="svg-edge" marker-end="url(#arrowHead)" />
+            <circle cx="56" cy="45" r="20" class="svg-node" />
+            <text x="56" y="52" class="svg-letter svg-letter-sm">A</text>
+            <circle cx="164" cy="45" r="20" class="svg-node" />
+            <text x="164" y="52" class="svg-letter svg-letter-sm">B</text>
+          </svg>
+          <p data-i18n="directedDesc">
+            Garis memiliki panah. Hubungan hanya berlaku satu arah, misalnya jalan satu arah.
+          </p>
+        </article>
+
+        <!-- Weighted -->
+        <article class="card card-small">
+          <h4>Weighted Graph <span class="term-id">(Graf Berbobot)</span></h4>
+          <svg viewBox="0 0 220 90" class="mini-svg mini-svg-sm" role="img" aria-label="Graf berbobot">
+            <line x1="78" y1="45" x2="142" y2="45" class="svg-edge" />
+            <circle cx="56" cy="45" r="20" class="svg-node" />
+            <text x="56" y="52" class="svg-letter svg-letter-sm">A</text>
+            <circle cx="164" cy="45" r="20" class="svg-node" />
+            <text x="164" y="52" class="svg-letter svg-letter-sm">B</text>
+            <rect x="94" y="18" width="34" height="20" rx="10" class="svg-weight-bg" />
+            <text x="111" y="33" class="svg-caption">120 m</text>
+          </svg>
+          <p data-i18n="weightedDesc">
+            Setiap garis memiliki angka (bobot), misalnya jarak dalam meter atau waktu tempuh.
+          </p>
+        </article>
+      </div>
+
+      <div class="takeaway">
+        <span class="takeaway-icon">💡</span>
+        <p data-i18n="s1Takeaway">
+          Kesimpulan: untuk memodelkan rute sekolah, tentukan dulu apa yang menjadi node (tempat),
+          lalu edge (jalan penghubung antar tempat).
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TAHAP 2 — MISI PEMBUAT GRAF
+         ============================================================ -->
+    <section id="stage-2" class="stage" aria-labelledby="s2-title">
+      <h2 id="s2-title" class="stage-title" data-i18n="s2Title">Tahap 2 — Misi Pembuat Graf</h2>
+      <p class="lead" data-i18n="s2Mission">
+        Misi: Hubungkan tempat-tempat di sekolah berikut sesuai daftar hubungan yang benar.
+        Klik satu node, lalu klik node lain untuk menarik garis.
+      </p>
+
+      <div class="game-layout">
+        <div class="canvas-wrap">
+          <canvas id="graph-canvas" width="800" height="520"
+                  aria-label="Kanvas pembuat graf rute sekolah"></canvas>
+          <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        </div>
+
+        <aside class="side-panel">
+          <h3 class="panel-title" data-i18n="targetTitle">Daftar Hubungan (Edge) yang Harus Dibuat</h3>
+          <ul id="edge-checklist" class="checklist"></ul>
+
+          <div class="progress-row">
+            <span data-i18n="progressLabel">Hubungan terbentuk</span>
+            <strong id="progress-count">0 / 5</strong>
+          </div>
+          <div class="progress-bar"><span id="progress-fill"></span></div>
+
+          <div class="panel-actions">
+            <button type="button" id="btn-reset" class="btn btn-ghost" data-i18n="resetBtn">Ulangi Misi</button>
+            <button type="button" id="btn-check" class="btn btn-teal" data-i18n="checkBtn">Periksa Rute A → E</button>
+          </div>
+
+          <p class="hint" data-i18n="s2Hint">
+            Tips: garis HIJAU berarti hubungan benar, garis MERAH berarti hubungan salah (dan akan hilang).
+          </p>
+
+          <div class="legend">
+            <span class="legend-item"><i class="dot dot-node"></i><span data-i18n="legendNode">Node (Simpul)</span></span>
+            <span class="legend-item"><i class="dot dot-edge"></i><span data-i18n="legendEdge">Edge (Sisi)</span></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TAHAP 3 — REFLEKSI LKPD
+         ============================================================ -->
+    <section id="stage-3" class="stage" aria-labelledby="s3-title">
+      <h2 id="s3-title" class="stage-title" data-i18n="s3Title">Tahap 3 — Refleksi LKPD</h2>
+      <p class="lead" data-i18n="s3Intro">
+        Jawab pertanyaan berikut dengan kalimatmu sendiri. Jawabanmu akan ikut tercetak saat
+        kamu menekan tombol "Selesaikan &amp; Unduh PDF".
+      </p>
+
+      <div class="identity-grid">
+        <label class="field">
+          <span data-i18n="nameLabel">Nama</span>
+          <input type="text" id="student-name" autocomplete="name" />
+        </label>
+        <label class="field">
+          <span data-i18n="classLabel">Kelas</span>
+          <input type="text" id="student-class" autocomplete="off" />
+        </label>
+        <label class="field">
+          <span data-i18n="dateLabel">Tanggal</span>
+          <input type="date" id="student-date" />
+        </label>
+      </div>
+
+      <div id="questions" class="questions"></div>
+
+      <div class="stage3-actions no-print">
+        <button type="button" id="btn-print" class="btn btn-primary btn-lg" data-i18n="printBtn">
+          Selesaikan &amp; Unduh PDF
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== Navigasi Bawah ===== -->
+    <div class="stage-nav no-print">
+      <button type="button" id="btn-prev" class="btn btn-ghost" data-i18n="prevBtn">← Sebelumnya</button>
+      <button type="button" id="btn-next" class="btn btn-primary" data-i18n="nextBtn">Selanjutnya →</button>
+    </div>
+  </main>
+
+  <!-- ===== Modal Sukses ===== -->
+  <div id="modal-overlay" class="modal-overlay no-print" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-emoji">🎉</div>
+      <h2 id="modal-title" data-i18n="modalTitle">Hebat! Misi Selesai</h2>
+      <p id="modal-body" data-i18n="modalBody">
+        Kamu berhasil membentuk seluruh edge yang benar pada graf rute sekolah.
+      </p>
+      <div id="modal-routes" class="modal-routes"></div>
+      <button type="button" id="modal-close" class="btn btn-primary btn-lg" data-i18n="modalClose">
+        Lanjut ke Refleksi
+      </button>
+    </div>
+  </div>
+
+  <!-- ===== Footer Wajib ===== -->
+  <footer class="app-footer">
+    LKPD Informatika Kelas 8 · Graf: Representasi Masalah dan Navigasi · © 2026 SMP Negeri 19 Kota Bekasi
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
