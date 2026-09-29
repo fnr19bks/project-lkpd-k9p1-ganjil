@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ikon Graf">
+  <title>LKPD Graf — SMPN 19 Bekasi</title>
+  <desc>Ikon graf sederhana: empat simpul (node) terhubung oleh sisi (edge).</desc>
+
+  <defs>
+    <!-- Latar belakang biru dongker dengan gradasi -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#0b2545"/>
+      <stop offset="55%"  stop-color="#123a67"/>
+      <stop offset="100%" stop-color="#1b4f8a"/>
+    </linearGradient>
+
+    <!-- Gradasi toska untuk node -->
+    <linearGradient id="nodeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1cc9b9"/>
+      <stop offset="100%" stop-color="#0b8f85"/>
+    </linearGradient>
+
+    <!-- Cahaya lembut di dalam node -->
+    <radialGradient id="nodeShine" cx="35%" cy="30%" r="65%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="55%"  stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Bayangan lembut -->
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="1.4" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Latar belakang kotak membulat -->
+  <rect x="0" y="0" width="64" height="64" rx="14" ry="14" fill="url(#bgGrad)"/>
+
+  <!-- Kilau tipis di bagian atas latar -->
+  <path d="M0 14 Q0 0 14 0 L50 0 Q64 0 64 14 L64 22 Q32 30 0 22 Z"
+        fill="#ffffff" opacity="0.06"/>
+
+  <!-- ===== EDGE (SISI) ===== -->
+  <g stroke="#12b3a6" stroke-width="4.2" stroke-linecap="round" fill="none" filter="url(#softShadow)">
+    <!-- A-B-C membentuk jalur -->
+    <line x1="16" y1="46" x2="32" y2="30"/>
+    <line x1="32" y1="30" x2="50" y2="20"/>
+    <!-- B-D -->
+    <line x1="32" y1="30" x2="22" y2="16"/>
+    <!-- Cabang ke E -->
+    <line x1="50" y1="20" x2="48" y2="46"/>
+  </g>
+
+  <!-- Garis dalam yang lebih terang untuk efek berkilau -->
+  <g stroke="#5ff0e0" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.85">
+    <line x1="16" y1="46" x2="32" y2="30"/>
+    <line x1="32" y1="30" x2="50" y2="20"/>
+    <line x1="32" y1="30" x2="22" y2="16"/>
+    <line x1="50" y1="20" x2="48" y2="46"/>
+  </g>
+
+  <!-- ===== NODE (SIMPUL) ===== -->
+  <g filter="url(#softShadow)">
+    <!-- Node C (kiri bawah) -->
+    <circle cx="16" cy="46" r="7.5" fill="url(#nodeGrad)" stroke="#ffffff" stroke-width="1.6"/>
+    <circle cx="16" cy="46" r="7.5" fill="url(#nodeShine)"/>
+
+    <!-- Node B (tengah) -->
+    <circle cx="32" cy="30" r="8.5" fill="url(#nodeGrad)" stroke="#ffffff" stroke-width="1.8"/>
+    <circle cx="32" cy="30" r="8.5" fill="url(#nodeShine)"/>
+
+    <!-- Node A (kanan atas) -->
+    <circle cx="50" cy="20" r="7.5" fill="url(#nodeGrad)" stroke="#ffffff" stroke-width="1.6"/>
+    <circle cx="50" cy="20" r="7.5" fill="url(#nodeShine)"/>
+
+    <!-- Node D (kiri atas) -->
+    <circle cx="22" cy="16" r="6" fill="url(#nodeGrad)" stroke="#ffffff" stroke-width="1.4"/>
+    <circle cx="22" cy="16" r="6" fill="url(#nodeShine)"/>
+
+    <!-- Node E (kanan bawah) -->
+    <circle cx="48" cy="46" r="6" fill="url(#nodeGrad)" stroke="#ffffff" stroke-width="1.4"/>
+    <circle cx="48" cy="46" r="6" fill="url(#nodeShine)"/>
+  </g>
+
+  <!-- Aksen titik kuning di node utama sebagai "highlight" -->
+  <circle cx="32" cy="30" r="2.2" fill="#ffb703"/>
+</svg>
