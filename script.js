@@ -60,7 +60,7 @@
   const I18N = {
     id: {
       appTitle: 'LKPD Digital · Graf: Representasi Masalah & Navigasi',
-      appSubtitle: 'Informatika Kelas 8 — Berpikir Komputasional',
+      appSubtitle: 'Informatika Kelas 9 — Berpikir Komputasional',
 
       step1: 'Belajar Konsep',
       step2: 'Misi Pembuat Graf',
